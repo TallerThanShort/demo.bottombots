@@ -10,10 +10,11 @@
     <script>
         window.onload = function(){
             const fragment = new URLSearchParams(window.location.hash.slice(1));
-            const [accessToken, tokenType, state] = [fragment.get('access_token'), fragment.get('token_type'), fragment.get('state')];
+            const [accessToken, tokenType, state, timeout] = [fragment.get('access_token'), fragment.get('token_type'), fragment.get('state'), fragment.get('expires_in')];
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('tokenType', tokenType);
             localStorage.setItem('state', state);
+            localStorage.setItem('timeout', timeout);
 
             if (!accessToken) {
                 if(tokenType){
